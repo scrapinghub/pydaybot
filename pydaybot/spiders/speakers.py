@@ -1,6 +1,6 @@
 from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
-from pydaybot.items import SpeakerItem
+from pydaybot.loaders import SpeakerLoader
 
 
 class SpeakersSpider(BaseSpider):
@@ -13,8 +13,8 @@ class SpeakersSpider(BaseSpider):
     def parse(self, response):
         hxs = HtmlXPathSelector(response=response)
         for sel in hxs.select('//div[@class="speaker_container"]'):
-            item = SpeakerItem()
-            item['name'] = sel.select('.//div[@class="speaker_name"]/text()').extract()[0].strip()
-            item['image'] = sel.select('.//div[@class="speaker_image"]/img/@src').extract()[0].strip()
-            item['description'] = sel.select('.//div[@class="speaker_description"]').extract()[0].strip()
-            yield item
+            il = SpeakerLoader(selector=sel)
+            il.add_xpath('name', './/div[@class="speaker_name"]/text()')
+            il.add_xpath('image', './/div[@class="speaker_image"]/img/@src')
+            il.add_xpath('description', './/div[@class="speaker_description"]/*')
+            yield il.load_item()
