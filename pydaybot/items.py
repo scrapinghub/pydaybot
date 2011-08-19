@@ -5,7 +5,8 @@
 
 from scrapy.item import Item, Field
 
-class PydaybotItem(Item):
-    # define the fields for your item here like:
-    # name = Field()
-    pass
+
+class SpeakerItem(Item):
+    name = Field()
+    description = Field()
+    image = Field()
