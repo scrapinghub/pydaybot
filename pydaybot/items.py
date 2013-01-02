@@ -10,3 +10,4 @@ class SpeakerItem(Item):
     name = Field()
     description = Field()
     image = Field()
+    image_urls = Field()

@@ -13,3 +13,8 @@ SPIDER_MODULES = ['pydaybot.spiders']
 NEWSPIDER_MODULE = 'pydaybot.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+
+IMAGES_STORE = '/tmp/pydaybot'
+ITEM_PIPELINES = [
+    'scrapy.contrib.pipeline.images.ImagesPipeline',
+]
