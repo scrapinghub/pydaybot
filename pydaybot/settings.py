@@ -7,14 +7,15 @@
 #
 
 BOT_NAME = 'pydaybot'
-BOT_VERSION = '1.0'
 
 SPIDER_MODULES = ['pydaybot.spiders']
 NEWSPIDER_MODULE = 'pydaybot.spiders'
-USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+HTTPCACHE_ENABLED = 1
 
-IMAGES_STORE = '/tmp/pydaybot'
+IMAGES_STORE = 'images'
 ITEM_PIPELINES = [
     'scrapy.contrib.pipeline.images.ImagesPipeline',
 ]
+
+#IMAGES_MIN_HEIGHT = 200
