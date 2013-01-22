@@ -14,7 +14,8 @@ class SpeakersSpider(BaseSpider):
         hxs = HtmlXPathSelector(response=response)
         for sel in hxs.select('//div[@id="speakers_list"]//div[@class="row-fluid"]'):
             il = SpeakerLoader(selector=sel)
-            il.add_xpath('name', './/div/h2/text()')
+            il.add_xpath('name', './/div/h2')
             il.add_xpath('image_urls', './/ul[@class="thumbnails"]//img/@src')
-            il.add_xpath('description', './/div/p//text()')
+            il.add_xpath('description', './/div/p')
             yield il.load_item()
+            break
