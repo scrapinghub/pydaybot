@@ -18,4 +18,3 @@ class SpeakersSpider(BaseSpider):
             il.add_xpath('image_urls', './/ul[@class="thumbnails"]//img/@src')
             il.add_xpath('description', './/div/p')
             yield il.load_item()
-            break
